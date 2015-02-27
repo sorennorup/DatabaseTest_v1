@@ -113,7 +113,9 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchDisplayDele
         
     }
     
-    
+    func anotherTest(){
+        
+    }
     
     
     func colorBackground(myString:String,myTextField:UITextField){
@@ -126,8 +128,9 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchDisplayDele
             myTextField.backgroundColor = UIColor.whiteColor();
             }
         }
-        
-        
+    func test (){}
+    var hey:String!
+    
     }
 
 

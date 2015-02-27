@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HDq-cn-m4J">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DatabaseTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="X4u-0Y-Oit">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="158" width="270" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rNi-df-O1e">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                    <rect key="frame" x="21" y="116" width="270" height="38"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oMz-mH-2La">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="54" y="283" width="124" height="25"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Erstattet af:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gwp-rT-80B">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="21" y="382" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cpd-S3-4rn">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="21" y="406" width="272" height="30"/>
+                                </variation>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UUdanmark_web_logoLarger" translatesAutoresizingMaskIntoConstraints="NO" id="62l-eW-BCx">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="14" width="165" height="79"/>
+                                </variation>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sOx-NI-cch">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="21" y="459" width="272" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Også kaldet:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-mx-6O8">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="23" y="433" width="99" height="30"/>
+                                </variation>
+                            </textField>
+                            <textView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" bounces="NO" pagingEnabled="YES" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMr-kW-FhC">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <rect key="frame" x="19" y="196" width="272" height="184"/>
+                                </variation>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="xUz-6v-vSw">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                <state key="normal" title="Søg igen">
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="120" y="503" width="75" height="40"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="HDq-cn-m4J" kind="show" id="QcH-7Z-D0Y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="X4u-0Y-Oit"/>
+                                <exclude reference="rNi-df-O1e"/>
+                                <exclude reference="oMz-mH-2La"/>
+                                <exclude reference="gwp-rT-80B"/>
+                                <exclude reference="cpd-S3-4rn"/>
+                                <exclude reference="62l-eW-BCx"/>
+                                <exclude reference="sOx-NI-cch"/>
+                                <exclude reference="WvQ-mx-6O8"/>
+                                <exclude reference="YMr-kW-FhC"/>
+                                <exclude reference="xUz-6v-vSw"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="X4u-0Y-Oit"/>
+                                <include reference="rNi-df-O1e"/>
+                                <include reference="oMz-mH-2La"/>
+                                <include reference="gwp-rT-80B"/>
+                                <include reference="cpd-S3-4rn"/>
+                                <include reference="62l-eW-BCx"/>
+                                <include reference="sOx-NI-cch"/>
+                                <include reference="WvQ-mx-6O8"/>
+                                <include reference="YMr-kW-FhC"/>
+                                <include reference="xUz-6v-vSw"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="alsoCalled" destination="sOx-NI-cch" id="dJT-fu-7KC"/>
+                        <outlet property="desciption" destination="YMr-kW-FhC" id="vko-lf-WXg"/>
+                        <outlet property="labelNowCalled" destination="oMz-mH-2La" id="gf7-CR-qob"/>
+                        <outlet property="nowCalled" destination="cpd-S3-4rn" id="smt-Wn-RU0"/>
+                        <outlet property="searchDisplayController" destination="OHC-oh-nx4" id="l91-cr-HR9"/>
+                        <outlet property="shortDefinition" destination="rNi-df-O1e" id="3XE-fK-bge"/>
+                        <outlet property="textRes" destination="X4u-0Y-Oit" id="qyS-iM-BQW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="OHC-oh-nx4">
+                    <connections>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="PW1-pt-7Au"/>
+                        <outlet property="searchContentsController" destination="vXZ-lx-hvc" id="cZZ-xc-6Hk"/>
+                        <outlet property="searchResultsDataSource" destination="vXZ-lx-hvc" id="eZk-If-bYx"/>
+                        <outlet property="searchResultsDelegate" destination="vXZ-lx-hvc" id="qaW-fW-rDQ"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="-5361" y="-841.5"/>
+        </scene>
+        <!--Om App-->
+        <scene sceneID="gwS-jY-RJ0">
+            <objects>
+                <viewController id="k1v-ou-VJP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aXi-dj-clg"/>
+                        <viewControllerLayoutGuide type="bottom" id="HPH-49-HTF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LE9-Ak-k5p">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Om Appen" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DmQ-pr-bBX">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="85" y="234" width="194" height="30"/>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="DmQ-pr-bBX"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="DmQ-pr-bBX"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Om App" id="AXX-Hm-ESM">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-7"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aYb-ym-vGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7269" y="-95.25"/>
+        </scene>
+        <!--Vilkår-->
+        <scene sceneID="ED2-wH-CeN">
+            <objects>
+                <viewController id="PXJ-Hb-t4w" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CZE-r4-0cD"/>
+                        <viewControllerLayoutGuide type="bottom" id="A4h-2s-cYT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3eO-dH-Czx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Vilkår" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-rD-cfo">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="115" y="192" width="287" height="30"/>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="4ao-rD-cfo"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="4ao-rD-cfo"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Vilkår" id="gS7-IU-hgo">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-8"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ou-LM-QdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8059.5" y="-53.25"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="40f-wv-ao1">
+            <objects>
+                <tabBarController id="HDq-cn-m4J" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Qzn-yC-FKR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="J0r-eU-eKf" kind="relationship" relationship="viewControllers" id="2dE-T0-afs"/>
+                        <segue destination="PXJ-Hb-t4w" kind="relationship" relationship="viewControllers" id="gof-Bi-qh9"/>
+                        <segue destination="k1v-ou-VJP" kind="relationship" relationship="viewControllers" id="jNg-FB-vob"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HZx-47-bnm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7699.5" y="-921"/>
+        </scene>
+        <!--Søg-->
+        <scene sceneID="23k-un-Wes">
+            <objects>
+                <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="J0r-eU-eKf" userLabel="Søg" customClass="secondViewController" customModule="DatabaseTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IQf-88-8Yo"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Sd-HA-H09"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xqm-UD-3pl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eB5-Oe-wht">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="368" id="PuR-AT-7Go"/>
+                                    <constraint firstAttribute="height" constant="50" id="R2U-5b-UYE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PuR-AT-7Go"/>
+                                        <exclude reference="R2U-5b-UYE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="PuR-AT-7Go"/>
+                                        <include reference="R2U-5b-UYE"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="UUdanmark_web_logoLarger" translatesAutoresizingMaskIntoConstraints="NO" id="BUt-dl-Hwh">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3lf-Ui-Tq3"/>
+                                    <constraint firstAttribute="height" constant="100" id="oQq-SP-mkE"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3lf-Ui-Tq3"/>
+                                        <exclude reference="oQq-SP-mkE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="3lf-Ui-Tq3"/>
+                                        <include reference="oQq-SP-mkE"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Forkortelser og begreber" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ob-1i-wZK">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caT-dZ-5uj">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="0fT-RT-snA"/>
+                                </constraints>
+                                <color key="tintColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Søg">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0fT-RT-snA"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="0fT-RT-snA"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="presentation" identifier="segueSendingData" id="DeG-SI-Yl2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BUt-dl-Hwh" firstAttribute="leading" secondItem="Xqm-UD-3pl" secondAttribute="leadingMargin" id="6Bq-ey-wGd"/>
+                            <constraint firstAttribute="centerY" secondItem="eB5-Oe-wht" secondAttribute="centerY" id="M5K-CW-mu8"/>
+                            <constraint firstItem="eB5-Oe-wht" firstAttribute="top" secondItem="2Ob-1i-wZK" secondAttribute="bottom" constant="50" id="NPr-FH-FUR"/>
+                            <constraint firstItem="2Ob-1i-wZK" firstAttribute="leading" secondItem="Xqm-UD-3pl" secondAttribute="leading" constant="15" id="VdX-ny-Dfu"/>
+                            <constraint firstItem="eB5-Oe-wht" firstAttribute="leading" secondItem="Xqm-UD-3pl" secondAttribute="leadingMargin" id="c5n-25-jsI"/>
+                            <constraint firstItem="caT-dZ-5uj" firstAttribute="top" secondItem="eB5-Oe-wht" secondAttribute="bottom" constant="5" id="iTx-QH-2K7"/>
+                            <constraint firstAttribute="centerX" secondItem="eB5-Oe-wht" secondAttribute="centerX" id="m52-WA-sC6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="caT-dZ-5uj" secondAttribute="trailing" id="nqN-NP-cfn"/>
+                            <constraint firstItem="BUt-dl-Hwh" firstAttribute="top" secondItem="Xqm-UD-3pl" secondAttribute="topMargin" constant="11" id="vfl-H1-nCL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eB5-Oe-wht" secondAttribute="trailing" id="yiO-Ez-Kjt"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="eB5-Oe-wht"/>
+                                <exclude reference="2Ob-1i-wZK"/>
+                                <exclude reference="caT-dZ-5uj"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="VdX-ny-Dfu"/>
+                                <exclude reference="M5K-CW-mu8"/>
+                                <exclude reference="NPr-FH-FUR"/>
+                                <exclude reference="c5n-25-jsI"/>
+                                <exclude reference="m52-WA-sC6"/>
+                                <exclude reference="yiO-Ez-Kjt"/>
+                                <exclude reference="iTx-QH-2K7"/>
+                                <exclude reference="nqN-NP-cfn"/>
+                                <exclude reference="6Bq-ey-wGd"/>
+                                <exclude reference="vfl-H1-nCL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="eB5-Oe-wht"/>
+                                <include reference="BUt-dl-Hwh"/>
+                                <include reference="2Ob-1i-wZK"/>
+                                <include reference="caT-dZ-5uj"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="VdX-ny-Dfu"/>
+                                <include reference="M5K-CW-mu8"/>
+                                <include reference="NPr-FH-FUR"/>
+                                <include reference="c5n-25-jsI"/>
+                                <include reference="m52-WA-sC6"/>
+                                <include reference="yiO-Ez-Kjt"/>
+                                <include reference="iTx-QH-2K7"/>
+                                <include reference="nqN-NP-cfn"/>
+                                <include reference="6Bq-ey-wGd"/>
+                                <include reference="vfl-H1-nCL"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Søg" id="uKv-eE-P0F">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-10"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="textInputField" destination="eB5-Oe-wht" id="qmQ-GD-2Kh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DPS-7E-IhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6552" y="-869.25"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="UUdanmark_web_logoLarger" width="418" height="238"/>
+    </resources>
+</document>
