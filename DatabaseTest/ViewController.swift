@@ -106,7 +106,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchDisplayDele
             }
             else{
                 self.nowCalled.text = name.asString()
-                self.nowCalled.backgroundColor = UIColor.whiteColor()
+                
             }
         }
 
@@ -130,6 +130,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchDisplayDele
         }
     func test (){}
     var hey:String!
+    
     
     }
 
