@@ -14,12 +14,13 @@ import AppKit
 #endif
 
 let SQLITE_DATE = SQLITE_NULL + 1
+internal let SQLITE_STATIC = unsafeBitCast(0, sqlite3_destructor_type.self)
+internal let SQLITE_TRANSIENT = unsafeBitCast(-1, sqlite3_destructor_type.self)
 
-private let SQLITE_STATIC = sqlite3_destructor_type(COpaquePointer(bitPattern:0))
-private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern:-1))
+
 
 // MARK:- SQLColumn Class - Column Definition
-@objc class SQLColumn {
+class SQLColumn {
 	var value:AnyObject? = nil
 	var type:CInt = -1
 	
@@ -36,11 +37,11 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 				return "\(value!)"
 				
 			case SQLITE_TEXT:
-				return value as String
+				return value as! String
 				
 			case SQLITE_BLOB:
-				if let str = NSString(data:value as NSData, encoding:NSUTF8StringEncoding) {
-					return str
+				if let str = NSString(data:value as! NSData, encoding:NSUTF8StringEncoding) {
+					return str as String
 				} else {
 					return ""
 				}
@@ -51,7 +52,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 			case SQLITE_DATE:
 				let fmt = NSDateFormatter()
 				fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				return fmt.stringFromDate(value as NSDate)
+				return fmt.stringFromDate(value as! NSDate)
 				
 			default:
 				return ""
@@ -61,14 +62,14 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 	func asInt()->Int {
 		switch (type) {
 			case SQLITE_INTEGER, SQLITE_FLOAT:
-				return value as Int
+				return value as! Int
 				
 			case SQLITE_TEXT:
-				let str = value as NSString
+				let str = value as! NSString
 				return str.integerValue
 				
 			case SQLITE_BLOB:
-				if let str = NSString(data:value as NSData, encoding:NSUTF8StringEncoding) {
+				if let str = NSString(data:value as! NSData, encoding:NSUTF8StringEncoding) {
 					return str.integerValue
 				} else {
 					return 0
@@ -78,7 +79,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 				return 0
 				
 			case SQLITE_DATE:
-				return Int((value as NSDate).timeIntervalSince1970)
+				return Int((value as! NSDate).timeIntervalSince1970)
 				
 			default:
 				return 0
@@ -88,14 +89,14 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 	func asDouble()->Double {
 		switch (type) {
 			case SQLITE_INTEGER, SQLITE_FLOAT:
-				return value as Double
+				return value as! Double
 			
 			case SQLITE_TEXT:
-				let str = value as NSString
+				let str = value as! NSString
 				return str.doubleValue
 			
 			case SQLITE_BLOB:
-				if let str = NSString(data:value as NSData, encoding:NSUTF8StringEncoding) {
+				if let str = NSString(data:value as! NSData, encoding:NSUTF8StringEncoding) {
 					return str.doubleValue
 				} else {
 					return 0.0
@@ -105,7 +106,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 				return 0.0
 			
 			case SQLITE_DATE:
-				return (value as NSDate).timeIntervalSince1970
+				return (value as! NSDate).timeIntervalSince1970
 			
 			default:
 				return 0.0
@@ -119,7 +120,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 				return str.dataUsingEncoding(NSUTF8StringEncoding)
 			
 			case SQLITE_TEXT:
-				let str = value as NSString
+				let str = value as! NSString
 				return str.dataUsingEncoding(NSUTF8StringEncoding)
 			
 			case SQLITE_BLOB:
@@ -131,7 +132,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 			case SQLITE_DATE:
 				let fmt = NSDateFormatter()
 				fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				let str = fmt.stringFromDate(value as NSDate)
+				let str = fmt.stringFromDate(value as! NSDate)
 				return str.dataUsingEncoding(NSUTF8StringEncoding)
 			
 			default:
@@ -142,19 +143,19 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 	func asDate()->NSDate? {
 		switch (type) {
 			case SQLITE_INTEGER, SQLITE_FLOAT:
-				let tm = value as Double
+				let tm = value as! Double
 				return NSDate(timeIntervalSince1970:tm)
 			
 			case SQLITE_TEXT:
 				let fmt = NSDateFormatter()
 				fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				return fmt.dateFromString(value as String)
+				return fmt.dateFromString(value as! String)
 			
 			case SQLITE_BLOB:
-				if let str = NSString(data:value as NSData, encoding:NSUTF8StringEncoding) {
+				if let str = NSString(data:value as! NSData, encoding:NSUTF8StringEncoding) {
 					let fmt = NSDateFormatter()
 					fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-					return fmt.dateFromString(str)
+					return fmt.dateFromString(str as String)
 				} else {
 					return nil
 				}
@@ -176,7 +177,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 }
 
 // MARK:- SQLRow Class - Row Definition
-@objc class SQLRow {
+class SQLRow {
 	var data = Dictionary<String, SQLColumn>()
 	
 	subscript(key: String) -> SQLColumn? {
@@ -195,7 +196,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 }
 
 // MARK:- SQLiteDB Class - Does all the work
-@objc class SQLiteDB {
+class SQLiteDB {
 	let DB_NAME = "data.db"
 	let QUEUE_LABLE = "SQLiteDB"
 	private var db:COpaquePointer = nil
@@ -210,14 +211,14 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 	
 	class func sharedInstance() -> SQLiteDB! {
 		dispatch_once(&Static.token) {
-			Static.instance = self(gid:"")
+			Static.instance = self.init(gid:"")
 		}
 		return Static.instance!
 	}
 	
 	class func sharedInstance(gid:String) -> SQLiteDB! {
 		dispatch_once(&Static.token) {
-			Static.instance = self(gid:gid)
+			Static.instance = self.init(gid:gid)
 		}
 		return Static.instance!
 	}
@@ -243,16 +244,19 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 				assert(false, "Error getting container URL for group: \(GROUP)")
 			}
 		}
-		let path = docDir.stringByAppendingPathComponent(dbName)
-		println("Database path: \(path)")
+		let path = docDir.NS.stringByAppendingPathComponent(dbName)
+		print("Database path: \(path)")
 		// Check if copy of DB is there in Documents directory
 		if !(fm.fileExistsAtPath(path)) {
 			// The database does not exist, so copy to Documents directory
-			if let from = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent(dbName) {
+			if let from = NSBundle.mainBundle().resourcePath?.NS.stringByAppendingPathComponent(dbName) {
 				var error:NSError?
-				if !fm.copyItemAtPath(from, toPath: path, error: &error) {
-					println("SQLiteDB - failed to copy writable version of DB!")
-					println("Error - \(error!.localizedDescription)")
+				do {
+					try fm.copyItemAtPath(from, toPath: path)
+				} catch let error1 as NSError {
+					error = error1
+					print("SQLiteDB - failed to copy writable version of DB!")
+					print("Error - \(error!.localizedDescription)")
 					return
 				}
 			}
@@ -262,7 +266,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 		let error = sqlite3_open(cpath!, &db)
 		if error != SQLITE_OK {
 			// Open failed, close DB and fail
-			println("SQLiteDB - failed to open DB!")
+			print("SQLiteDB - failed to open DB!")
 			sqlite3_close(db)
 		}
 		fmt.dateFormat = "YYYY-MM-dd HH:mm:ss"
@@ -278,7 +282,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 			let ud = NSUserDefaults.standardUserDefaults()
 			var launchCount = ud.integerForKey("LaunchCount")
 			launchCount--
-			println("SQLiteDB - Launch count \(launchCount)")
+			print("SQLiteDB - Launch count \(launchCount)")
 			var clean = false
 			if launchCount < 0 {
 				clean = true
@@ -292,10 +296,10 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 				return
 			}
 			// Clean DB
-			println("SQLiteDB - Optimize DB")
+			print("SQLiteDB - Optimize DB")
 			let sql = "VACUUM; ANALYZE"
 			if execute(sql) != SQLITE_OK {
-				println("SQLiteDB - Error cleaning DB")
+				print("SQLiteDB - Error cleaning DB")
 			}
 			sqlite3_close(db)
 		}
@@ -345,14 +349,14 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 	// Private method which prepares the SQL
 	private func prepare(sql:String, params:[AnyObject]?)->COpaquePointer {
 		var stmt:COpaquePointer = nil
-		var cSql = sql.cStringUsingEncoding(NSUTF8StringEncoding)
+		let cSql = sql.cStringUsingEncoding(NSUTF8StringEncoding)
 		// Prepare
 		let result = sqlite3_prepare_v2(self.db, cSql!, -1, &stmt, nil)
 		if result != SQLITE_OK {
 			sqlite3_finalize(stmt)
 			if let error = String.fromCString(sqlite3_errmsg(self.db)) {
 				let msg = "SQLiteDB - failed to prepare SQL: \(sql), Error: \(error)"
-				println(msg)
+				print(msg)
 			}
 			return nil
 		}
@@ -363,7 +367,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 			let cnt = CInt(params!.count)
 			if cntParams != cnt {
 				let msg = "SQLiteDB - failed to bind parameters, counts did not match. SQL: \(sql), Parameters: \(params)"
-				println(msg)
+				print(msg)
 				return nil
 			}
 			var flag:CInt = 0
@@ -390,7 +394,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 					sqlite3_finalize(stmt)
 					if let error = String.fromCString(sqlite3_errmsg(self.db)) {
 						let msg = "SQLiteDB - failed to bind for SQL: \(sql), Parameters: \(params), Index: \(ndx) Error: \(error)"
-						println(msg)
+						print(msg)
 					}
 					return nil
 				}
@@ -407,7 +411,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 			sqlite3_finalize(stmt)
 			if let err = String.fromCString(sqlite3_errmsg(self.db)) {
 				let msg = "SQLiteDB - failed to execute SQL: \(sql), Error: \(err)"
-				println(msg)
+				print(msg)
 			}
 			return 0
 		}
@@ -453,7 +457,7 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 				fetchColumnInfo = false
 			}
 			// Get row data for each column
-			var row = SQLRow()
+			let row = SQLRow()
 			for index in 0..<columnCount {
 				let key = columnNames[Int(index)]
 				let type = columnTypes[Int(index)]
@@ -495,22 +499,22 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 			// Remove spaces
 			// Is the data type in any of the pre-set values?
 //			println("SQLiteDB - Cleaned up column type: \(tmp)")
-			if contains(intTypes, tmp) {
+			if intTypes.contains(tmp) {
 				return SQLITE_INTEGER
 			}
-			if contains(realTypes, tmp) {
+			if realTypes.contains(tmp) {
 				return SQLITE_FLOAT
 			}
-			if contains(charTypes, tmp) {
+			if charTypes.contains(tmp) {
 				return SQLITE_TEXT
 			}
-			if contains(blobTypes, tmp) {
+			if blobTypes.contains(tmp) {
 				return SQLITE_BLOB
 			}
-			if contains(nullTypes, tmp) {
+			if nullTypes.contains(tmp) {
 				return SQLITE_NULL
 			}
-			if contains(dateTypes, tmp) {
+			if dateTypes.contains(tmp) {
 				return SQLITE_DATE
 			}
 			return SQLITE_TEXT
@@ -577,4 +581,8 @@ private let SQLITE_TRANSIENT = sqlite3_destructor_type(COpaquePointer(bitPattern
 //		println("SQLiteDB - Got value: \(val)")
 		return val
 	}
+}
+
+public extension String {
+    var NS: NSString { return (self as NSString) }
 }
