@@ -20,6 +20,7 @@ class UpdateDbFile {
         
         
     }
+    // new change
 
      class func findPathInDocDir(var filename:String)->String{
          filename = "/"+filename
