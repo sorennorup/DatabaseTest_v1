@@ -13,9 +13,11 @@ import UIKit
 import AppKit
 #endif
 
+
 let SQLITE_DATE = SQLITE_NULL + 1
 internal let SQLITE_STATIC = unsafeBitCast(0, sqlite3_destructor_type.self)
 internal let SQLITE_TRANSIENT = unsafeBitCast(-1, sqlite3_destructor_type.self)
+
 
 
 
@@ -26,6 +28,7 @@ class SQLColumn {
 	
 	init(value:AnyObject, type:CInt) {
 //		println("SQLiteDB - Initialize column with type: \(type), value: \(value)")
+        
 		self.value = value
 		self.type = type
 	}
@@ -196,14 +199,21 @@ class SQLRow {
 }
 
 // MARK:- SQLiteDB Class - Does all the work
-class SQLiteDB {
-	let DB_NAME = "data.db"
-	let QUEUE_LABLE = "SQLiteDB"
+class SQLiteDB{
+    
+   
+
+           let DB_NAME = "data.db"
+
+           let QUEUE_LABLE = "SQLiteDB"
 	private var db:COpaquePointer = nil
 	private var queue:dispatch_queue_t
 	private var fmt = NSDateFormatter()
 	private var GROUP = ""
-	
+    var newFileName = " "
+    var recentFileName = " "
+   
+    
 	struct Static {
 		static var instance:SQLiteDB? = nil
 		static var token:dispatch_once_t = 0
@@ -222,20 +232,33 @@ class SQLiteDB {
 		}
 		return Static.instance!
 	}
- 
+    
 	required init(gid:String) {
+       
+        
+        
+       
 		assert(Static.instance == nil, "Singleton already initialized!")
 		GROUP = gid
 		// Set queue
 		queue = dispatch_queue_create(QUEUE_LABLE, nil)
 		// Set up for file operations
 		let fm = NSFileManager.defaultManager()
+        
+        
 		let dbName:String = String.fromCString(DB_NAME)!
+       
+
 		var docDir = ""
 		// Is this for an app group?
 		if GROUP.isEmpty {
 			// Get path to DB in Documents directory
-			docDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+            
+
+			docDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)[0] as String
+            
+            
+            
 		} else {
 			// Get path to shared group folder
 			if let url = fm.containerURLForSecurityApplicationGroupIdentifier(GROUP) {
@@ -244,15 +267,22 @@ class SQLiteDB {
 				assert(false, "Error getting container URL for group: \(GROUP)")
 			}
 		}
+        
 		let path = docDir.NS.stringByAppendingPathComponent(dbName)
-		print("Database path: \(path)")
+        
+                print(path)
+        
+
+      
 		// Check if copy of DB is there in Documents directory
 		if !(fm.fileExistsAtPath(path)) {
+            
 			// The database does not exist, so copy to Documents directory
-			if let from = NSBundle.mainBundle().resourcePath?.NS.stringByAppendingPathComponent(dbName) {
+           if let from = NSBundle.mainBundle().resourcePath?.NS.stringByAppendingPathComponent(dbName) {
 				var error:NSError?
 				do {
 					try fm.copyItemAtPath(from, toPath: path)
+                    print("restart the app to get updated data")
 				} catch let error1 as NSError {
 					error = error1
 					print("SQLiteDB - failed to copy writable version of DB!")
@@ -261,7 +291,13 @@ class SQLiteDB {
 				}
 			}
 		}
+
+
+        
+        
 		// Open the DB
+        
+
 		let cpath = path.cStringUsingEncoding(NSUTF8StringEncoding)
 		let error = sqlite3_open(cpath!, &db)
 		if error != SQLITE_OK {
@@ -271,6 +307,7 @@ class SQLiteDB {
 		}
 		fmt.dateFormat = "YYYY-MM-dd HH:mm:ss"
 	}
+
 	
 	deinit {
 		closeDatabase()

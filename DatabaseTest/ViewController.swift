@@ -7,65 +7,183 @@
 //
 
 import UIKit
+// This is the view containing the specified result, with full description field and link to add. information
 
-class ViewController: UIViewController, UISearchBarDelegate, UISearchDisplayDelegate {
-    var passTest:String!
+class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    var begrebString:String?
+    var fullNameString:String?
+    var beskrivelse:String?
+    var replacedWidth:String?
+    var alsoCalledString:String?
+    var linkRead:String?
+    var replaces:String?
+    var seeMore:String?
+    var passTest:String?
+    var strArray:[String] = []
+    var restArray:[String] = []
+    var num:Int = 0
+    
     @IBOutlet weak var shortDefinition: UITextField!
-    @IBOutlet weak var textRes: UITextField!
-    @IBOutlet weak var inputField: UITextField!
+   
+    @IBOutlet weak var fullName: UILabel!
     
     @IBOutlet weak var labelNowCalled: UITextField!
-    @IBOutlet weak var nowCalled: UITextField!
-    @IBOutlet weak var desciption: UITextView!
     
+    @IBOutlet weak var desciption: UITextView!
 
-    @IBOutlet weak var alsoCalled: UITextField!
-    let db = SQLiteDB.sharedInstance();
+    @IBOutlet weak var replacing: UILabel!
+  
+    @IBOutlet weak var linkDisplay: UITextField!
+    @IBOutlet weak var nowCalled: UILabel!
+   
+    @IBOutlet weak var alsoCalled: UILabel!
+    var button:UIButton?
+    
+    
+    @IBOutlet var myTableView: UITableView!
+
+   
+    let rowArray = [SQLRow]()
+    
 
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        var inputString:String = passTest.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        let query = "select * from Forkortelser2 WHERE Begreb like ?  "
         
-        let query2 = "select * from Forkortelser2 WHERE Fuldbetegnelse like ?"
-        let query3 = "select * from Forkortelser2 WHERE Beskrivelse like ?"
-        let data2 = db.query(query2,parameters:[inputString + "%"])
-        let data3 = db.query(query3,parameters:["%" + inputString + "%"])
-        let data = db.query(query,parameters:[inputString + "%"] )
-        //  if data contains no result try the other query
-        if data.count == 0{
-            let data2 = db.query(query2,parameters:[inputString + "%"])
-          
-            /* var alert = UIAlertController(title: "Vi fandt desværre ikke noget resultat", message: "Desværre ingen resultater på " + inputString, preferredStyle: UIAlertControllerStyle.Alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(defaultAction)
-            self.presentViewController(alert, animated: true, completion:nil)*/
-            
-            self.textRes.text = "Desværre ingen resultater på " + inputString
-            
-            // if data2 contains a sqlrow
-            if data2.count != 0{
-                // get all the values and display in the textfields
-                self.getValues(data2)
+        super.viewDidLoad()
+        self.myTableView.tableFooterView = UIView()
+       print("num: ")
+        print(num)
+        self.myTableView.rowHeight = 44
+        self.shortDefinition.text = " "+begrebString!
+        self.fullName.text = " "+fullNameString!
+        self.desciption.text = beskrivelse!
+        self.strArray = [replacedWidth!,alsoCalledString!,replaces!,seeMore! ]
+        for var index = 0; index < strArray.count;++index{
+            if strArray[index].isEmpty == false{
+                self.restArray.append(strArray[index])
+            }
+        }
+        
+         }
+    
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return restArray.count
+        
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        
+        let cell:CustomTableViewCell2 = tableView.dequeueReusableCellWithIdentifier("Cell2") as! CustomTableViewCell2
+        print(indexPath.row);
+        let res:String = restArray[indexPath.row];
+        
+        
+        if restArray[indexPath.row].isEmpty == false {
+            if res == replacedWidth {
+        cell.label1.text = "Erstattet af:  "
                 
             }
-            else if(data3.count != 0){
-                self.getValues(data3)
+            else if res == alsoCalledString{
+                cell.label1.text = "Også kaldet: "
+            }
+            else if res == replaces{
+                cell.label1.text = "Erstatter: "
+            }
+            else if res == seeMore{
+                cell.label1.text = "Læs mere på:"
+            }
+            
+            cell.label2.text = res
+          }
+        return cell
+        
+        
+        
+        
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if restArray[indexPath.row] == seeMore!{
+        if let url = NSURL(string:linkRead! ) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+        }
+        else if restArray[indexPath.row] == replacedWidth{
+            buttonAction()
+        }
+        
+    }
+
+    
+
+    
+    
+   
+    
+    
+    func buttonAction()
+    {    var str:String?
+        print("action is clicked")
+        
+        if (replacedWidth?.isEmpty == false){
+        str = replacedWidth!;
+        }
+        else if (alsoCalledString?.isEmpty == false){
+            str = alsoCalledString!;
+        }
+        
+        let db = SQLiteDB.sharedInstance();
+        
+        
+        
+        //select in row named "Begreb"
+        let query = "select * from Forkortelser2 WHERE Begreb like ?  "
+        //select in row named "Fuldbetegnelse"
+        //let query2 = "select * from Forkortelser2 WHERE Fuldbetegnelse like ?"
+        //select in row named "Beskrivelse"
+         //let query3 = "select * from Forkortelser2 WHERE Beskrivelse like ?"
+        
+        
+        
+        // The results from the row named Begreb
+        let begreb = db.query(query,parameters:[str! + "%"] )
+        //let fuldbetegnelse = db.query(query2,parameters:[str! + "%"] )
+        if begreb.count > 0{
+            let row = begreb[0]
+            
+            
+            
+            
+            if let name = row["Begreb"]{
+                self.shortDefinition.text = " "+name.asString()
+            }
+            if let fullNameStr = row["Fuldbetegnelse"]{
+                self.fullName.text = " " + fullNameStr.asString()
+                
+                
+                
+            }
+            if let desc = row["Beskrivelse"]{
+                self.desciption.text = desc.asString()
             }
             
             
-        }
+                
             
-        else{
-            self.getValues(data)
+            if let also = row["Ogsaakaldet"]{
+                
+                self.alsoCalled.text = also.asString()
+                print("her bliver var læst")
+            }
         }
-
-        
 
     }
-   
    
        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,63 +191,21 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchDisplayDele
     }
     
     
-    
-    
-    func getValues(myObject:[SQLRow]){
-        let row = myObject[0]
-        if let name = row["Begreb"]{
-            self.shortDefinition.text = name.asString()
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        if (segue.identifier == "argBack") {
+            let svc = segue!.destinationViewController as! MyViewController;
             
-        }
+             svc.passTest = passTest!
+             svc.arrayNum = num
+            
         
-        if let name = row["Fuldbetegnelse"]{
-            
-            self.textRes.text = name.asString()
         }
-        if let called = row["Ogsåkaldet"]{
-            let result:String = called.asString();
-            colorBackground(result, myTextField: self.alsoCalled)
-            //self.alsoCalled.text = called.asString()
-        }
-        if let beskrivelse = row["Beskrivelse"]{
-           
-            self.desciption.text = beskrivelse.asString()
-            
-        }
-        if let name = row["Nukaldet"]{
-            // if name is empty
-            if name.asString().isEmpty{
-                // remove present value
-                self.nowCalled.text = " "
-                // set the backgroundcolor to red
-                self.nowCalled.backgroundColor = UIColor.redColor();
-            }
-            else{
-                self.nowCalled.text = name.asString()
-                
-            }
-        }
+    }
 
+    
+    
         
-    }
-    
-    func anotherTest(){
-        
-    }
-    
-    
-    func colorBackground(myString:String,myTextField:UITextField){
-        if myString.isEmpty{
-            myTextField.text = " "
-            myTextField.backgroundColor = UIColor.redColor()
-        }
-            else{
-                myTextField.text = myString
-            myTextField.backgroundColor = UIColor.whiteColor();
-            }
-        }
-    func test (){}
-    var hey:String!
+       var hey:String!
     
     
     }
