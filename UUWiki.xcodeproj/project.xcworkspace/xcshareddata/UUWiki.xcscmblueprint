@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "330BEB59A556AD4A796176F345656890C5EA1B3E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4385D29B3E13A574526EC8305D8FEA3835CC32B9" : 0,
+    "330BEB59A556AD4A796176F345656890C5EA1B3E" : 0,
+    "C5EC032834B3A7F4987A07DA5FCC51F304ACB319" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5D6644F4-29E6-40C4-8075-EEF0203F23B8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4385D29B3E13A574526EC8305D8FEA3835CC32B9" : "",
+    "330BEB59A556AD4A796176F345656890C5EA1B3E" : "DatabaseTest_v2\/",
+    "C5EC032834B3A7F4987A07DA5FCC51F304ACB319" : "..\/..\/AndroidStudioProjects\/UUWiki"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "UUWiki",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "UUWiki.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sorennorup\/DatabaseTest_v1.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "330BEB59A556AD4A796176F345656890C5EA1B3E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sorennorup\/DatabaseTest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4385D29B3E13A574526EC8305D8FEA3835CC32B9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sorennorup\/UUWiki.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C5EC032834B3A7F4987A07DA5FCC51F304ACB319"
+    }
+  ]
+}
