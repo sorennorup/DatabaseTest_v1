@@ -211,7 +211,7 @@ class SQLiteDB{
 	private var fmt = NSDateFormatter()
 	private var GROUP = ""
     var newFileName = " "
-    var recentFileName = " "
+    var recentFileName = "Bøsse "
    
     
 	struct Static {
@@ -235,8 +235,6 @@ class SQLiteDB{
     
 	required init(gid:String) {
        
-        
-        
        
 		assert(Static.instance == nil, "Singleton already initialized!")
 		GROUP = gid
@@ -267,10 +265,11 @@ class SQLiteDB{
 				assert(false, "Error getting container URL for group: \(GROUP)")
 			}
 		}
+      
         
 		let path = docDir.NS.stringByAppendingPathComponent(dbName)
         
-                print(path)
+                     print(path)
         
 
       
@@ -291,9 +290,6 @@ class SQLiteDB{
 				}
 			}
 		}
-
-
-        
         
 		// Open the DB
         

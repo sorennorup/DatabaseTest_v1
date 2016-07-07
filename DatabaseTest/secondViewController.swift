@@ -110,7 +110,10 @@ class secondViewController:UIViewController, UITableViewDelegate,UISearchBarDele
     
     
     @IBAction func update(sender: AnyObject) {
-       exit(0)
+       executeDownloadTask()
+        let db = SQLiteDB.sharedInstance();
+        print(db.recentFileName)
+    
     }
     
     
